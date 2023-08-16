@@ -15,7 +15,7 @@ public class StudentServices {
 	@PersistenceContext
 	EntityManager entityManager;
 
-	ClassRoomServices classRoomServices = new ClassRoomServices();
+	//ClassRoomServices classRoomServices;
 	
 	
 

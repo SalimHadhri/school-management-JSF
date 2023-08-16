@@ -15,20 +15,26 @@
 	<hr />
 	<h:form>
 		<h:messages showDetail="true"></h:messages>
-		
+
 		<h:panelGrid columns="3">
 			<h:outputLabel value="First Name:"></h:outputLabel>
 			<h:inputText id="firstName" value="#{studentController.firstName}"
-				requiredMessage="first-name is required" required="true">
+				requiredMessage="first-name is required" required="true"
+				validatorMessage="the length of firstName must be between 3 and 30">
 				<f:ajax event="blur" render="messageGenderFirstName"></f:ajax>
+				<f:validateLength minimum="3" maximum="30">
+				</f:validateLength>
 			</h:inputText>
 			<h:message for="firstName" id="messageGenderFirstName"
 				style="color:red"></h:message>
 
 			<h:outputLabel value="Last Name:"></h:outputLabel>
 			<h:inputText id="lastName" value="#{studentController.lastName}"
-				requiredMessage="last-name is required" required="true">
+				requiredMessage="last-name is required" required="true"
+				validatorMessage="the length of lastName must be between 3 and 30">
 				<f:ajax event="blur" render="messageGenderLastName"></f:ajax>
+				<f:validateLength minimum="3" maximum="30">
+				</f:validateLength>
 			</h:inputText>
 			<h:message for="lastName" id="messageGenderLastName"
 				style="color:red"></h:message>
@@ -52,9 +58,10 @@
 
 			<h:outputLabel value="Select classroom:"></h:outputLabel>
 			<h:selectOneMenu value="#{studentController.classRoomName}">
-				<c:selectItems value="#{studentController.doListClassroomName()}"/>
+				<c:selectItems value="#{studentController.doListClassroomName()}" />
 			</h:selectOneMenu>
-			<br/><br/>
+			<br />
+			<br />
 
 		</h:panelGrid>
 

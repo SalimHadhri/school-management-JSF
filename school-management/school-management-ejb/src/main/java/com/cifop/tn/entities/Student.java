@@ -29,6 +29,8 @@ public class Student {
 	private Date dateOfeBirth;
 	
 	
+	private String  classRoomName ;
+	
 
 	public Student() {
 	}
@@ -47,6 +49,8 @@ public class Student {
 		this.adress = adress;
 		this.dateOfeBirth = dateOfeBirth;
 	}
+
+
 
 	public String getLastName() {
 		return lastName;
@@ -87,5 +91,31 @@ public class Student {
 	public long getId() {
 		return id;
 	}
+
+	public String getClassRoomName() {
+		return classRoomName;
+	}
+
+	public void setClassRoomName(String classRoomName) {
+		this.classRoomName = classRoomName;
+	}
+
+	public Student(String firstName, String lastName, String adress, Date dateOfeBirth, String classRoomName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.adress = adress;
+		this.dateOfeBirth = dateOfeBirth;
+		this.classRoomName = classRoomName;
+	}
+
+	public Student(long id, String firstName, String lastName, String adress, Date dateOfeBirth, String classRoomName) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.adress = adress;
+		this.dateOfeBirth = dateOfeBirth;
+		this.classRoomName = classRoomName;
+	}
+
 
 }

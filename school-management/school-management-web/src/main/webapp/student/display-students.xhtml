@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<h:head>
+	<title>List of Students</title>
+</h:head>
+
+<h:body>
+	<h1>List of Students</h1>
+	<hr />
+
+	<h:dataTable value="#{studentController.doListStudents()}"
+		var="student">
+		<!-- 		<h:column> -->
+		<!-- 			<f:facet name="header">ID</f:facet> -->
+		<!-- 			<h:link value="#{student.id}" outcome="student"> -->
+		<!-- 				<f:param name="id" value="#{student.id}" /> -->
+		<!-- 			</h:link> -->
+		<!-- 		</h:column> -->
+
+		<h:column>
+			<f:facet name="header">ID</f:facet>
+			<h:outputText value="#{student.id}" />
+		</h:column>
+
+
+		<h:column>
+			<f:facet name="header">First Name</f:facet>
+			<h:outputText value="#{student.firstName}" />
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Last Name</f:facet>
+			<h:outputText value="#{student.lastName}" />
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Date Of Birth</f:facet>
+			<h:outputText value="#{student.dateOfeBirth}">
+				<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+			</h:outputText>
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">ClassRoom Name</f:facet>
+			<h:outputText value="#{student.classRoomName}" />
+		</h:column>
+
+	</h:dataTable>
+
+</h:body>
+
+</html>

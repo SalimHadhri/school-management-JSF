@@ -26,9 +26,9 @@ public class StudentController implements Serializable {
 
 	@Inject
 	ClassRoomServices classRoomServices;
-	
+
 	@Inject
-	FacesContext facesContext ;
+	FacesContext facesContext;
 
 	private String firstName;
 	private String lastName;
@@ -37,18 +37,17 @@ public class StudentController implements Serializable {
 
 	private String classRoomName;
 
-	
 	public void doCreateStudent() {
-		
+
 		ClassRoom classRoom = classRoomServices.findClassRoomByNameCreateQuery(classRoomName);
-		Student studentToAdd = new Student(firstName, lastName, adress, dateOfBirth);
-		
+		Student studentToAdd = new Student(firstName, lastName, adress, dateOfBirth,classRoomName);
+
 		studentServices.addStudent(studentToAdd);
 		classRoomServices.addStudentToClassroom(studentToAdd, classRoom);
-		
-		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"INFO","Student is saved successfully"));
 
-		
+		facesContext.addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO", "Student is saved successfully"));
+
 //		ClassRoom classRoom = classRoomServices.findClassRoomByNameCreateQuery(classRoomName);
 //		classRoomServices.addStudentToClassroom(studentToAdd, classRoom);
 //		studentServices.addStudent(studentToAdd);
@@ -66,7 +65,18 @@ public class StudentController implements Serializable {
 		return names;
 
 	}
+	
+	public List<Student> doListStudents(){
+		
+		return studentServices.findAllStudents() ;
+	}
 
+	public String doGetClassRoomNameByNameStudent() {
+		return classRoomServices.findClassroomNameByFirstNameStudentCreateQuery(firstName);
+		
+	}
+	
+	
 	public String getClassRoomName(ClassRoom classRoom) {
 		return classRoom.getName();
 	}
