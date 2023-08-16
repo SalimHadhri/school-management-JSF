@@ -1,0 +1,5 @@
+com\cifop\tn\entities\ClassRoom.class
+com\cifop\tn\entities\Student.class
+com\cifop\tn\services\StudentServices.class
+com\cifop\tn\services\ClassRoomServices.class
+com\cifop\tn\Application.class

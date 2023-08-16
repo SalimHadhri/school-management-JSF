@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://xmlns.jcp.org/jsf/core">
+
+
+<h:head>
+	<title>Create new student</title>
+</h:head>
+
+<h:body>
+	<h1>Create new student</h1>
+	<hr />
+	<h:form>
+		<h:messages showDetail="true"></h:messages>
+		
+		<h:panelGrid columns="3">
+			<h:outputLabel value="First Name:"></h:outputLabel>
+			<h:inputText id="firstName" value="#{studentController.firstName}"
+				requiredMessage="first-name is required" required="true">
+				<f:ajax event="blur" render="messageGenderFirstName"></f:ajax>
+			</h:inputText>
+			<h:message for="firstName" id="messageGenderFirstName"
+				style="color:red"></h:message>
+
+			<h:outputLabel value="Last Name:"></h:outputLabel>
+			<h:inputText id="lastName" value="#{studentController.lastName}"
+				requiredMessage="last-name is required" required="true">
+				<f:ajax event="blur" render="messageGenderLastName"></f:ajax>
+			</h:inputText>
+			<h:message for="lastName" id="messageGenderLastName"
+				style="color:red"></h:message>
+
+			<h:outputLabel value="Date Of Birth (dd/mm/yyyy):"></h:outputLabel>
+			<h:inputText id="dateOfBirth"
+				value="#{studentController.dateOfBirth}"
+				requiredMessage="date-of-birth is required" required="true">
+				<f:ajax event="blur" render="messageGenderDateOfBirth"></f:ajax>
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:inputText>
+			<h:message for="dateOfBirth" id="messageGenderDateOfBirth"
+				style="color:red"></h:message>
+
+			<h:outputLabel value="Adress:"></h:outputLabel>
+			<h:inputText id="Adress" value="#{studentController.adress}"
+				requiredMessage="adress is required" required="true">
+				<f:ajax event="blur" render="messageGenderAdress"></f:ajax>
+			</h:inputText>
+			<h:message for="Adress" id="messageGenderAdress" style="color:red"></h:message>
+
+			<h:outputLabel value="Select classroom:"></h:outputLabel>
+			<h:selectOneMenu value="#{studentController.classRoomName}">
+				<c:selectItems value="#{studentController.doListClassroomName()}"/>
+			</h:selectOneMenu>
+			<br/><br/>
+
+		</h:panelGrid>
+
+		<h:commandButton value="Create a student"
+			action="#{studentController.doCreateStudent()}"></h:commandButton>
+	</h:form>
+</h:body>
+
+
+
+
+
+
+</html>
