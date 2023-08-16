@@ -36,11 +36,12 @@ public class StudentController implements Serializable {
 	private String adress;
 
 	private String classRoomName;
+	private String classRoomNameSearch ;
 
 	public void doCreateStudent() {
 
 		ClassRoom classRoom = classRoomServices.findClassRoomByNameCreateQuery(classRoomName);
-		Student studentToAdd = new Student(firstName, lastName, adress, dateOfBirth,classRoomName);
+		Student studentToAdd = new Student(firstName, lastName, adress, dateOfBirth, classRoomName);
 
 		studentServices.addStudent(studentToAdd);
 		classRoomServices.addStudentToClassroom(studentToAdd, classRoom);
@@ -65,18 +66,23 @@ public class StudentController implements Serializable {
 		return names;
 
 	}
-	
-	public List<Student> doListStudents(){
-		
-		return studentServices.findAllStudents() ;
+
+	public List<Student> doListStudents() {
+
+		return studentServices.findAllStudents();
 	}
 
 	public String doGetClassRoomNameByNameStudent() {
 		return classRoomServices.findClassroomNameByFirstNameStudentCreateQuery(firstName);
-		
+
 	}
+
+	public List<Student> doGetListStudentsByClassRoomName() {
+			return studentServices.findListStudentByClassroomName(classRoomNameSearch);
+		
 	
-	
+	}
+
 	public String getClassRoomName(ClassRoom classRoom) {
 		return classRoom.getName();
 	}
@@ -119,6 +125,14 @@ public class StudentController implements Serializable {
 
 	public void setClassRoomName(String classRoomName) {
 		this.classRoomName = classRoomName;
+	}
+
+	public String getClassRoomNameSearch() {
+		return classRoomNameSearch;
+	}
+
+	public void setClassRoomNameSearch(String classRoomNameSearch) {
+		this.classRoomNameSearch = classRoomNameSearch;
 	}
 
 }

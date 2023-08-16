@@ -10,14 +10,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 @Entity
 @Table(name = "ClassRoom")
-@NamedQuery(name = "findListStudentByClassRoomName", query = "select c from ClassRoom c where c.name = :classRoom")
+@NamedQuery(name = "findListStudentByClassRoomName", query = "select c from Student c where c.classRoomName = :classRoomName")
 @NamedQuery(name = "findClassRoomByName", query = "select c from ClassRoom c where c.name = :classRoomName")
 @NamedQuery(name = "findClassRoomByIdStudent", query = "select c from ClassRoom c where :student in (c.students)")
 public class ClassRoom {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -27,6 +25,8 @@ public class ClassRoom {
 
 	@OneToMany(fetch = FetchType.EAGER)
 	private List<Student> students;
+
+	
 
 	public String getGrade() {
 		return grade;

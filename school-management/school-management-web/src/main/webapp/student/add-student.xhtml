@@ -57,7 +57,8 @@
 			<h:message for="Adress" id="messageGenderAdress" style="color:red"></h:message>
 
 			<h:outputLabel value="Select classroom:"></h:outputLabel>
-			<h:selectOneMenu value="#{studentController.classRoomName}">
+			<h:selectOneMenu value="#{studentController.classRoomName}"
+				requiredMessage="adress is required" required="true">
 				<c:selectItems value="#{studentController.doListClassroomName()}" />
 			</h:selectOneMenu>
 			<br />

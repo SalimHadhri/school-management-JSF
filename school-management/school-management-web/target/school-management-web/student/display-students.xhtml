@@ -13,14 +13,9 @@
 	<h1>List of Students</h1>
 	<hr />
 
+	<h:outputText value="No student available!" rendered="#{empty studentController.doListStudents()}" />
 	<h:dataTable value="#{studentController.doListStudents()}"
-		var="student">
-		<!-- 		<h:column> -->
-		<!-- 			<f:facet name="header">ID</f:facet> -->
-		<!-- 			<h:link value="#{student.id}" outcome="student"> -->
-		<!-- 				<f:param name="id" value="#{student.id}" /> -->
-		<!-- 			</h:link> -->
-		<!-- 		</h:column> -->
+		var="student"  rendered="#{not empty studentController.doListStudents()}">
 
 		<h:column>
 			<f:facet name="header">ID</f:facet>
@@ -55,3 +50,10 @@
 </h:body>
 
 </html>
+
+<!-- 		<h:column> -->
+<!-- 			<f:facet name="header">ID</f:facet> -->
+<!-- 			<h:link value="#{student.id}" outcome="student"> -->
+<!-- 				<f:param name="id" value="#{student.id}" /> -->
+<!-- 			</h:link> -->
+<!-- 		</h:column> -->

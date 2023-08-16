@@ -1,5 +1,6 @@
 package com.cifop.tn.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.cifop.tn.entities.ClassRoom;
@@ -54,10 +55,9 @@ public class StudentServices {
 	// namedQuery
 	public List<Student> findListStudentByClassroomName(String classRoomName) {
 
-		ClassRoom classRoomSearch = (ClassRoom) entityManager.createNamedQuery("findListStudentByClassroomName")
-				.setParameter("classRoom", classRoomName).getSingleResult();
-		return classRoomSearch.getStudents();
-
+		return  entityManager.createNamedQuery("findListStudentByClassRoomName")
+				.setParameter("classRoomName", classRoomName).getResultList();
+		
 	}
 
 //	public void addStudentUpdateClassroom(Student student, ClassRoom classRoom) {

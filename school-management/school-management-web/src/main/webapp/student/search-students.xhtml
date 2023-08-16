@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<h:head>
+	<title>Search list pf students by class room name</title>
+</h:head>
+<h:body>
+	<h1>Search list of students by class room name</h1>
+	<hr />
+
+	<h:form>
+		<h:panelGrid columns="2">
+
+			<h:outputLabel value="Enter name of class room:"></h:outputLabel>
+			<h:inputText id="classRoomName"
+				value="#{studentController.classRoomNameSearch}">
+				<f:ajax event="keypress" render="messageGenderClassRoomName"></f:ajax>
+
+			</h:inputText>
+
+
+
+			<h:dataTable
+				value="#{studentController.doGetListStudentsByClassRoomName()}"
+				var="student" id="messageGenderClassRoomName" for="classRoomName">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{student.id}" />
+				</h:column>
+
+
+				<h:column>
+					<f:facet name="header">First Name</f:facet>
+					<h:outputText value="#{student.firstName}" />
+						
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Last Name</f:facet>
+					<h:outputText value="#{student.lastName}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Date Of Birth</f:facet>
+					<h:outputText value="#{student.dateOfeBirth}">
+						<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+					</h:outputText>
+				</h:column>
+
+			</h:dataTable>
+
+		</h:panelGrid>
+
+
+
+	</h:form>
+
+
+
+</h:body>
+</html>
